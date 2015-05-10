@@ -1,4 +1,3 @@
-import functools
 import socket
 import select
 
@@ -37,8 +36,8 @@ class ThrottledSocket(object):
 
     def _rate_loop(self):
         while True:
-            self.current = 0
             sleep(1)
+            self.current = 0
 
     def _update_rate(self, n):
         self.current += n
@@ -51,13 +50,17 @@ class ThrottledSocket(object):
             self.write_loop = Greenlet.spawn(self._write_loop)
 
         self.write_queue += bytes
+        sleep(0)
 
     def read(self, nbytes=0):
         if self.current < self.limit:
             available_n = self.limit - self.current
 
             nbytes = nbytes if nbytes <= available_n else available_n
-
-            return socket.read(nbytes)
+            self._update_rate(nbytes)
+            ret_val = self.socket.recv(nbytes)
         else:
-            return None
+            ret_val = None
+
+        sleep(0)
+        return ret_val
