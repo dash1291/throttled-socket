@@ -1,10 +1,13 @@
-from distutils.core import setup
+from setuptools import setup
+
 
 setup(
     name='throttledsocket',
     version='0.0.1',
-    packages=['throttledsocket',],
+    author="Ashish Dubey",
+    author_email="ashish.dubey91@gmail.com",
+    packages=['throttledsocket', ],
     license='MIT',
     long_description='Socket wrapper for rate limited network I/O.',
-    install_requires=['gevent',],
+    install_requires=['gevent', ],
 )
