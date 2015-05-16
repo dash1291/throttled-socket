@@ -8,6 +8,7 @@ setup(
     author_email="ashish.dubey91@gmail.com",
     packages=['throttledsocket', ],
     license='MIT',
+    description='Socket wrapper for rate limited network I/O.',
     long_description='Socket wrapper for rate limited network I/O.',
     install_requires=['gevent', ],
 )
