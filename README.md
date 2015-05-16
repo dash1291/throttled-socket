@@ -4,8 +4,6 @@ This is simple wrapper that allows rate limiting reads/writes on a socket.
 ## Usage
 The usage is pretty simple, simply create a socket like you have always done and pass it to a new `ThrottledSocket` object. `ThrottledSocket` object will use the original socket for all read/write calls while making sure the data flow rate does not exceed the value you decide.
 
-Examples:
-
 ### A simple client
 ```python
 import socket
